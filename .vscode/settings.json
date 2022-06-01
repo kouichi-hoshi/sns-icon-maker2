@@ -1,7 +1,9 @@
 {
   "cSpell.words": [
+    "Avenir",
     "tailwindcss",
     "vite",
     "vitejs"
-  ]
+  ],
+  "css.lint.unknownAtRules": "ignore",
 }
