@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="face" xmlns="http://www.w3.org/2000/svg" width="640" height="640" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 640">
+  <defs>
+    <symbol id="mouth-31" viewBox="0 0 132 48.8">
+      <path d="M66,48.8C38.3,48.8,13.2,33.4,.7,8.7-.8,5.8,.3,2.2,3.3,.7c3-1.5,6.6-.3,8.1,2.6,10.7,21,31.1,33.5,54.7,33.5S110,24.3,120.7,3.3c1.5-3,5.1-4.1,8.1-2.6,3,1.5,4.1,5.1,2.6,8.1-12.6,24.7-37.6,40-65.3,40Z"/>
+    </symbol>
+  </defs>
+  <use width="132" height="48.8" transform="translate(254 430)" xlink:href="#mouth-31"/>
+</svg>
