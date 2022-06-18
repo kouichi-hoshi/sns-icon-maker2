@@ -7,32 +7,31 @@ export default defineComponent({
   props: {
     path: {
       type: Object,
-      required: true
+      required: true,
     },
     faceParts: {
       type: Array,
-      required: true
+      required: true,
     },
     typeNames: {
       type: Array,
-      required: true
+      required: true,
     },
     faceTag: {
       type: String,
       required: true,
-      default: 'girl'
+      default: 'girl',
     },
     color: {
       type: String,
       required: true,
-      default: 'black'
-    }
+      default: 'black',
+    },
   },
   components: {
     svgIcon,
   },
-  setup (props) {
-
+  setup(props) {
     const path = props.path
     const faceParts = props.faceParts
     const faceTag = props.faceTag
@@ -90,18 +89,21 @@ export default defineComponent({
     }
 
     //顔パーツの初期設定
-    const activeFaceParts = setActiveFaceParts( createFacePartObjByType( findFacePartsByTag() ) )
+    const activeFaceParts = setActiveFaceParts(
+      createFacePartObjByType(findFacePartsByTag())
+    )
 
     return {
       path,
-      activeFaceParts
+      activeFaceParts,
     }
-  }
+  },
 })
 </script>
 <template>
   <div class="parts-preview mx-auto">
-    <div class="parts-preview__img"
+    <div
+      class="parts-preview__img"
       v-bind:class="'parts-preview__img-' + key"
       v-for="(parts, key) of activeFaceParts"
       v-bind:key="key"

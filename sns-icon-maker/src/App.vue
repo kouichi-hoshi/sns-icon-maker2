@@ -1,5 +1,11 @@
 <template>
-  <imgPreview :path="path" :face-parts="faceParts" :type-names="typeNames" face-tag="girl" color="#0c2e66" />
+  <imgPreview
+    :path="path"
+    :face-parts="faceParts"
+    :type-names="typeNames"
+    face-tag="girl"
+    color="#0c2e66"
+  />
 </template>
 
 <script>
@@ -20,7 +26,7 @@ export default {
     return {
       path,
       faceParts,
-      typeNames
+      typeNames,
     }
   },
 }
