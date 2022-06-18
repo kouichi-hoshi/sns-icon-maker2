@@ -1,7 +1,8 @@
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, defineComponent } from 'vue'
+import svgIcon from '../components/svgIcon.vue'
 
-export default {
+export default defineComponent({
   name: 'imgPreview',
   props: {
     path: {
@@ -21,9 +22,14 @@ export default {
       required: true,
       default: 'girl'
     },
+    color: {
+      type: String,
+      required: true,
+      default: 'black'
+    }
   },
   components: {
-    SVGElement,
+    svgIcon,
   },
   setup (props) {
 
@@ -31,7 +37,7 @@ export default {
     const faceParts = props.faceParts
     const faceTag = props.faceTag
     const typeNames = props.typeNames
-    let item = ref("aaa")
+    let color = props.color
 
     /**
      * 顔パーツをタグで絞り込む
@@ -83,69 +89,36 @@ export default {
       return activeParts
     }
 
-    // console.log(
-    //   setActiveFaceParts(
-    //     createFacePartObjByType(
-    //       findFacePartsByTag()
-    //     ), 1
-    //   )
-    // )
+    //顔パーツの初期設定
     const activeFaceParts = setActiveFaceParts( createFacePartObjByType( findFacePartsByTag() ) )
 
     return {
       path,
-      item,
       activeFaceParts
     }
   }
-}
-
+})
 </script>
 <template>
-
-<hr>
-
-        <div class="part-preview">
-
-          <!-- face parts preview -->
-          <div class="part-preview__inner">
-
-            <!-- face parts hair-back -->
-            <!-- face parts hair-back end -->
-
-            <!-- face parts -->
-            <div class="part-preview__img test"
-              v-bind:class="'part-preview__img-' + itemKey"
-              v-for="(item, itemKey) of activeFaceParts"
-              v-bind:key="itemKey"
-            >
-            <svg viewBox="0 0 640 640">
-              <use :href="path.faceParts + item.fileName + '.svg' + '#' + item.fileName" />
-            </svg>
-            <img :src="path.faceParts + item.fileName + '.svg' + '#' + item.fileName" />
-            </div><!-- face parts end -->
-
-          </div><!-- face parts preview end -->
-
-          <!-- capture preview -->
-          <!-- capture preview end -->
-
-        </div>
-
-<hr>
-
-
-
+  <div class="parts-preview mx-auto">
+    <div class="parts-preview__img"
+      v-bind:class="'parts-preview__img-' + key"
+      v-for="(parts, key) of activeFaceParts"
+      v-bind:key="key"
+    >
+      <svgIcon :name="parts.fileName" :color="color" />
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scooped>
-.part-preview {
+.parts-preview {
+  position: relative;
+  width: 320px;
   &__img {
-    max-width: 640px;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
-}
-.part-preview__img.test {
-  // border: 1px solid black;
-  fill: currentColor;
 }
 </style>
